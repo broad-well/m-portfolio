@@ -1,0 +1,1 @@
+rsync -rv dist/* mipeng@login.itd.umich.edu:Public/html/mportfolio/

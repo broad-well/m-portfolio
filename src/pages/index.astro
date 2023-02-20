@@ -1,81 +1,142 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import { Image } from '@astrojs/image/components';
+import Experience from '../components/Experience.astro';
+import Competency from '../components/Competency.astro';
+
+const kCompetencies = {
+	'Communication': {
+		level: 'Proficient',
+		progress: 40,
+		description: 'Through my extensive collaborative experience with Living ArtsEngine and three semesters of teaching experience for EECS 280 (Programming and Intro Data Structures), I have developed substantial expertise in technical communication to non-technical audiences.' +
+			'I will further develop my communication skills by seeking collaborative opportunities with other computer science students.'
+	},
+	'Creativity': {
+		level: 'Developing',
+		progress: 32,
+		description: 'I have demonstrated creativity through my Living ArtsEngine projects and various self-started software projects, but I lack artistic creativity. I will engage with more art forms (musical instruments, digital visual design) to build expertise in artistic creativity.'
+	},
+	'Empathy': {
+		level: 'Proficient',
+		progress: 40,
+		description: 'I have fostered empathy by mentoring in Living ArtsEngine, coaching individual students in EECS 280, and building a relationship-focused leadership approach in group projects. I continue to push myself to understand each others\' backgrounds, situations, and perspectives to the fullest in order to empathize with them more deeply.'
+	},
+	'Entrepreneurial Mindset': {
+		level: 'Proficient',
+		progress: 33,
+		description: 'I have empowered my entrepreneurial mindset to thrive by completing the Entrepreneurship minor, where I have come to understand the process of starting sustainable businesses and how that relates to engineering. I will shape this mindset through my entrepreneurship practicum courses.'
+	},
+	'Ethics': {
+		level: 'Developing',
+		progress: 20,
+		description: 'I am generally aware of non-technical ethical decisions, and I have validated this awareness in TCHNCLCM 497.' +
+			' In my 300-level humanities class in Digital Studies, I came to understand platform power and data sensitivity from a user\'s standpoint. ' + 
+			'I will develop my technical ethical awareness (especially around AI) in EECS 445 and by staying up-to-date with tech news and digital studies research.'
+	},
+	'Global/Cultural Awareness': {
+		level: 'Developing',
+		progress: 30,
+		description: 'As a trilingual immigrant from China, I am superficially aware of global cultures, but I am not sufficiently familiar with world history and geography.' +
+				'I will seek to learn from my peers and the Internet, reinforcing my knowledge using the same strategies as studying computer science.'
+	},
+	'Grit/Persistence': {
+		level: 'Proficient',
+		progress: 50,
+		description: 'Through my personal software projects, I have shown persistence spanning years of iterative work on the same subjects, but I also have plenty of unfinished small projects. I will further develop my grit ' +
+			'by reducing irrational risk aversion, avoiding distractions, setting solid goals, and holding myself accountable to reach those goals.'
+	},
+	'Leadership': {
+		level: 'Developing',
+		progress: 20,
+		description: 'Although I have a comprehensive understanding of leadership from a research viewpoint through ORGSTUDY 201 (Leadership and Collaboration), I have not demonstrated strong leadership during my time at Michigan except when supervising Collaborative Creative Projects as a Living ArtsEngine peer mentor. ' +
+			'I will reflect on my leadership style through the lens of ORGSTUDY 201, seek leadership roles in student organizations, and apply techniques from ORGSTUDY 201.'
+	},
+	'Lifelong Learning': {
+		level: 'Developing',
+		progress: 30,
+		description: '"Learner" is one of my top 5 strengths, according to the Gallop StrengthsQuest assessment. I have used my continuous learning mindset to stay updated with the latest technologies (frameworks, languages, techniques) in software development. ' +
+			'However, I will seek to apply this mindset to non-technical, cultural subjects such as music, art, and history.'
+	},
+	'Risk Management': {
+		level: 'Developing',
+		progress: 17,
+		description: 'My personality is high in risk aversion, but I have not formally assessed risks in software engineering. I will practice this procedure with my larger software projects and on teams developing mission-critical software, such as for competition aircraft.'
+	},
+	'Systems Thinking': {
+		level: 'Developing',
+		progress: 15,
+		description: 'I have had some systems development experience in FIRST robotics in high school, but I have never applied any formal systems thinking framework to analysis. I plan to take a few classes in CMPLXSYS (Complex Systems) in 2023-2024 to develop this skill.'
+	},
+	'Teamwork': {
+		level: 'Proficient',
+		progress: 44,
+		description: 'I have had numerous teamwork experiences throughout my experience at V1, Michigan Data Science Team, FAMNM, and Living ArtsEngine. I tend to contribute well to team projects and specialize in keeping teams on track, but I will remind myself to put more effort into developing trusting teammate relationships and keeping each other motivated.'
+	}
+}
+
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
+<Layout title="MPortfolio - Michael Peng">
+	<main class="container p-8 md:p-12 mx-auto">
+		<section class="flex justify-between items-center lg:items-start gap-8 flex-col lg:flex-row-reverse">
+			<Image src={`${import.meta.env.BASE_URL}images/self.jpg`} alt="Portrait of Michael Peng" width={300} height={300} format="webp" aspectRatio="1:1" class="rounded-full" />
+			<div class="flex gap-2 flex-col items-center lg:items-start text-center lg:text-left">
+				<h1 class="text-6xl font-mono">Michael Peng</h1>
+				<ul class="flex gap-4 my-1 text-gray-600">
+					<li class="inline"><abbr title="Computer Science and Engineering">CSE</abbr> + <abbr title="Entrepreneurship minor">ENTR</abbr> <abbr title="Class of 2024">'24</abbr></li>
+					<li class="inline"><a href="https://honors.engin.umich.edu">Michigan Engineering Honors</a></li>
+					<li class="inline"><a href="https://broaderator.com">Public Portfolio</a></li>
+				</ul>
+				<p>My purpose is to improve human experiences via innovative computational applications&mdash;enabling computers to reduce stress,
+					remove tedium, save time, and promote well-being in unprecedented ways. I am fulfilling this purpose by building software projects to solve novel, practical problems
+					and interning for companies that do so. To equip myself with necessary expertise, I am studying Computer Science at the University of Michigan, expecting to graduate with a <abbr title="Bachelors in Science and Engineering">BSE</abbr> in Winter 2024.</p> 
+			</div>
+		</section>
+		<section class="mt-8">
+			<h1 class="text-4xl font-mono mb-4">Experiences</h1>
+			<ul>
+				<li><Experience title="CourseKit: University Enrollment Toolkit">
+					<img class="inline-block" slot="logo" src={`${import.meta.env.BASE_URL}images/coursekit.svg`} width={20} height={20} alt="CourseKit logo" />
+					<p>
+						When I was tediously building my first-semester schedule in Summer 2021, I realized
+						that by automating the evaluation of schedule options, I can build a program that
+						finds my best schedules. Using this principle, I've developed three iterations of a schedule optimizer
+						for University of Michigan students, improving upon efficiency, robustness, and ease of integration
+						in each iteration. In parallel, I decided to plot the enrollment trends of EECS 281 and EECS 376
+						to prepare for my Winter 2022 registration, which caught the attention of a <a href="https://v1michigan.com">V1 Product Studio</a>
+						team that was trying to solve waitlist stress. My vision of CourseKit integrates both the schedule optimizer and the enrollment trend predictor
+						to help U-M students navigate the stress of registration.
+						In Fall 2022, <a href="https://plan.courses">CourseKit Predictor</a> had over 200 unique users.
+						In Winter 2023, my ALA 223 (Entrepreneurial Creativity) team will
+						bring the full form of <a href="https://instagram.com/coursekitoptimizer">CourseKit Optimizer</a> to life.
+					</p>
+					<p>
+						Looking back, I noticed the most important decision I made: I showed the V1 Product Studio team my enrollment trend graphs.
+						This caught the team's interest and eventually got me invited onto the team, which made the CourseKit vision possible.
+						My biggest takeaway from building CourseKit is that sharing one's work with like-minded developers can lead to powerful opportunities for collaboration and impact.
+						From CourseKit, I gained experience working with interdisciplinary colleagues on open-ended projects.
+						I learned to structure our goals and plans to let each member's expertise shine, ask for help on problems beyond my expertise, and convey technical ideas intuitively to non-technical audiences.
+						The persistent passion that drives me to build CourseKit Optimizer for our public launch in March 2023 compels me to pick technological Entrepreneurship as my
+						Michigan Engineering Honors focus area.
+					</p>
+				</Experience></li>
+			</ul>
+		</section>
+		<section class="mt-8">
+			<h1 class="text-4xl font-mono mb-4">Honors Plan</h1>
+			<div class="grid grid-cols-1 gap-3 lg:grid-cols-3 mb-4">
+				{Object.entries(kCompetencies).map(([label, info]) =>
+					<Competency title={label} level={info.level} progress={info.progress}>
+						<div class="col-span-full text-gray-600 mb-3">{info.description}</div>
+					</Competency>)}
+			</div>
+			<h2 class="text-2xl font-mono mb-1">Goal 1</h2>
+			<p class="mb-4"><strong>Lead my CourseKit Optimizer team in ALA 223 to launch its schedule optimizer website for all Michigan students at Ann Arbor by the time backpacking begins for Fall 2023</strong></p>
+			<h2 class="text-2xl font-mono mb-1">Goal 2</h2>
+			<p><strong>Start an artistic or recreational hobby for personal development and relationship-building by June 2023</strong></p>
+		</section>
 	</main>
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
 </style>

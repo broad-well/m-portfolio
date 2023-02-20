@@ -1,15 +1,20 @@
 {
-	"name": "m-portfolio",
-	"type": "module",
-	"version": "0.0.1",
-	"scripts": {
-		"dev": "astro dev",
-		"start": "astro dev",
-		"build": "astro build",
-		"preview": "astro preview",
-		"astro": "astro"
-	},
-	"dependencies": {
-		"astro": "^2.0.14"
-	}
+  "name": "m-portfolio",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/image": "^0.15.0",
+    "@astrojs/tailwind": "^3.0.1",
+    "@fontsource/iosevka": "^4.5.4",
+    "astro": "^2.0.4",
+    "sharp": "^0.31.3",
+    "tailwindcss": "^3.0.24"
+  }
 }
