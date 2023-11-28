@@ -1,8 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Image } from '@astrojs/image/components';
+import { Image } from 'astro:assets';
 import Experience from '../components/Experience.astro';
 import Competency from '../components/Competency.astro';
+
+import myself from '../assets/self.jpg';
+import coursekit from '../assets/coursekit.svg';
 
 const kCompetencies = {
 	'Communication': {
@@ -79,7 +82,7 @@ const kCompetencies = {
 <Layout title="MPortfolio - Michael Peng">
 	<main class="container p-8 md:p-12 mx-auto">
 		<section class="flex justify-between items-center lg:items-start gap-8 flex-col lg:flex-row-reverse">
-			<Image src={`${import.meta.env.BASE_URL}images/self.jpg`} alt="Portrait of Michael Peng" width={300} height={300} format="webp" aspectRatio="1:1" class="rounded-full" />
+			<Image src={myself} alt="Portrait of Michael Peng" width={300} height={300} format="webp" class="rounded-full" />
 			<div class="flex gap-2 flex-col items-center lg:items-start text-center lg:text-left">
 				<h1 class="text-6xl font-mono">Michael Peng</h1>
 				<ul class="flex gap-4 my-1 text-gray-600">
@@ -87,16 +90,16 @@ const kCompetencies = {
 					<li class="inline"><a href="https://honors.engin.umich.edu">Michigan Engineering Honors</a></li>
 					<li class="inline"><a href="https://broaderator.com">Public Portfolio</a></li>
 				</ul>
-				<p>My purpose is to improve human experiences via innovative computational applications&mdash;enabling computers to reduce stress,
-					remove tedium, save time, and promote well-being in unprecedented ways. I am fulfilling this purpose by building software projects to solve novel, practical problems
-					and interning for companies that do so. To equip myself with necessary expertise, I am studying Computer Science at the University of Michigan, expecting to graduate with a <abbr title="Bachelors in Science and Engineering">BSE</abbr> in Winter 2024.</p> 
+				<p>My purpose is to improve human experiences via innovative computational applications&mdash;enabling computers to
+					make life more efficient and delightful in unprecedented ways. I am fulfilling this purpose by building software projects to solve novel, practical problems
+					and interning for companies that do so. To equip myself with necessary expertise, I am studying Computer Science at the University of Michigan, expecting to graduate with a <abbr title="Bachelors of Science in Engineering">BSE</abbr> in Winter 2024.</p> 
 			</div>
 		</section>
 		<section class="mt-8">
 			<h1 class="text-4xl font-mono mb-4">Experiences</h1>
 			<ul>
 				<li><Experience title="CourseKit: University Enrollment Toolkit">
-					<img class="inline-block" slot="logo" src={`${import.meta.env.BASE_URL}images/coursekit.svg`} width={20} height={20} alt="CourseKit logo" />
+					<img class="inline-block" slot="logo" src={`${import.meta.env.BASE_URL}/images/coursekit.svg`} width={20} height={20} alt="CourseKit logo" />
 					<p>
 						When I was tediously building my first-semester schedule in Summer 2021, I realized
 						that by automating the evaluation of schedule options, I can build a program that
@@ -116,8 +119,40 @@ const kCompetencies = {
 						My biggest takeaway from building CourseKit is that sharing one's work with like-minded developers can lead to powerful opportunities for collaboration and impact.
 						From CourseKit, I gained experience working with interdisciplinary colleagues on open-ended projects.
 						I learned to structure our goals and plans to let each member's expertise shine, ask for help on problems beyond my expertise, and convey technical ideas intuitively to non-technical audiences.
-						The persistent passion that drives me to build CourseKit Optimizer for our public launch in March 2023 compels me to pick technological Entrepreneurship as my
-						Michigan Engineering Honors focus area.
+						CourseKit has solidified my professional aspiration of designing, building, and launching innovative software applications that elevate human experience.
+					</p>
+				</Experience></li>
+				<li><Experience title="Southwest Airlines breakdown research">
+					<p>
+						Ever since childhood, I've been captivated by civil aviation. To apply this interest
+						to my undergraduate research, I joined <a href="https://sites.google.com/umich.edu/lattice/home" rel="noreferrer">LATTICE</a> (led by professor Max Li)
+						and kickstarted a project investigating the scheduling and dispatch breakdown that Southwest Airlines faced between December 22 and December 29, 2022.
+						This project has now grown to a cross-institutional collaborative effort involving Michigan, Harvard, and MIT, where I have been in charge of
+						extracting insights from flight records collected from the Bureau of Transportation Statistics using DuckDB and Pandas.
+						So far, I have developed metrics for measuring network disruption, visualized disruption propagation on a map, and built regression models to predict
+						cancellation and delay percentages.
+						I am building an Agent-Based simulation to model the dynamics of network disruption propagation and validate different approaches to just-in-time recovery.
+						Using my findings, I will build a user-facing application that helps airlines assess risks and develop cancellation packages for my
+						Engineering Honors capstone project in Winter 2024.
+					</p>
+					<p>
+						The Southwest meltdown project was the first research project that I initiated.
+						As I was responsible for driving the vision of this project forward, I got to experience the ambiguity and uncertainty of research firsthand,
+						which has prepared me well for graduate-level research.
+						When conversing with Max about how I could contribute to LATTICE, I mentioned this breakdown offhandedly as a potential direction.
+						I was delighted to hear that he was also interested in this subject and would be interested in advising a project on it.
+					</p>
+				</Experience></li>
+				<li><Experience title="Cooperative house work schedule optimizer">
+					<p>
+						In January 2023, I heard from the Work Manager of Escher House about the process of generating the house's work schedule.
+						Work Managers need to reconcile the unique availabilities of up to 166 house members in order to assign shifts they prefer,
+						which was tedious when it was done manually. Having discovered the power of linear optimization, I built a proof-of-concept in Google Apps Script
+						that generates an optimal work schedule automatically, maximizing the number of preferred shift assignments.
+						I then refined this tool according to emergent needs from the work manager, and it successfully generated the initial work schedule for Spring/Summer 2023 as well as Fall 2023.
+					</p>
+					<p>
+						
 					</p>
 				</Experience></li>
 			</ul>
